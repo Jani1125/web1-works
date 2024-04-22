@@ -1,7 +1,23 @@
-<?php
+<?php 
+
+    session_start();
+
+    $is_logged_in = false;
+    if(isset($_SESSION['isloggedin']) && $_SESSION['isloggedin'] === true)
+    {
+      $is_logged_in = true;
+    }
 
     define('DB_PASS','8Al@(oiw5z[0Buy8');
     define('DB_NAME','manfred');
+
+    function get_connection()
+    {
+        return new PDO(
+            'mysql:host=localhost;dbname=' .DB_NAME.';charset=utf8',
+        DB_NAME,
+        DB_PASS);
+    }
 
     
     /*
